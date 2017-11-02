@@ -23,7 +23,7 @@ namespace PassGetWebApp
             
             if (db.checkAccount(id, pass))
             {
-                Response.Redirect("~/MainPage");
+                Response.Redirect("MainPage.aspx");
             }
            
             
