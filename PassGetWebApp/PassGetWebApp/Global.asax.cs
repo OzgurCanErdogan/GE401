@@ -11,6 +11,7 @@ namespace PassGetWebApp
     {
         protected void Application_Start(object sender, EventArgs e)
         {
+            //Response.Redirect("~/LoginScreen.aspx");
         }
     }
 }

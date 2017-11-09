@@ -96,6 +96,20 @@ namespace MysqlDatabase
                 this.CloseConnection();
             }
         }
+        public void InsertObject(string type, int id, string brand)
+        {
+            
+
+            OpenConnection();
+            string query = "INSERT INTO Products(idProducts, type, brand) VALUES(@idProducts, @type, @brand)";
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@type", type);
+            cmd.Parameters.AddWithValue("@idProducts", id);
+            cmd.Parameters.AddWithValue("@brand", brand);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        
+        }
 
         //Update statement
         public void Update()
@@ -146,11 +160,30 @@ namespace MysqlDatabase
                 IDcheck = (int)dataReader["userID"];
                 passwordCheck = dataReader["password"].ToString();
             }
+            dataReader.Close();
+            this.CloseConnection();
             if (ID == IDcheck && Password == passwordCheck)
                 return true;
             return false;
         }
+        public bool checkAdmin(int ID)
+        {
+            string query = "SELECT * FROM bitirme.admin WHERE adminID = " + ID;
+            OpenConnection();
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+            int IDcheck = 0;
+            while (dataReader.Read())
+            {
+                IDcheck = (int)dataReader["adminID"];
 
+            }
+            dataReader.Close();
+            this.CloseConnection();
+            if (ID == IDcheck)
+                return true;
+            return false;
+        }
         //Select statement
         //public List<string>[] Select()
         //{
