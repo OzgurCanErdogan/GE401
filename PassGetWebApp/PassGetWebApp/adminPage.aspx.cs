@@ -36,5 +36,11 @@ namespace PassGetWebApp
             db.InsertObject(TextBox1.Text, int.Parse(TextBox2.Text), TextBox3.Text);
             
         }
+        protected void Searchbtn(object sender, EventArgs e)
+        {
+            
+            if(db.searchProduct(txtArama.Text) != null)
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + db.searchProduct(txtArama.Text) + "');", true);
+        }
     }
 }

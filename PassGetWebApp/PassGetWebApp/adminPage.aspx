@@ -37,6 +37,9 @@
                         <li>
                             <a href="deafult.aspx" >Iletisim</a>
                         </li>
+                        <li>
+                            <a href="deafult.aspx" >Arama</a>
+                        </li>
                     </ul>
                 </nav>
 
@@ -44,7 +47,7 @@
 
                     <asp:TextBox ID="txtArama" CssClass="txtArama" runat="server"  placeholder="arama"/>
 
-                    <asp:Button ID="btnArama" CssClass="btnArama" Text="Ara" runat="server"/>
+                    <asp:Button ID="btnArama" CssClass="btnArama" Text="Ara" runat="server" OnClick ="Searchbtn"/>
 
 
                 </div>
