@@ -184,16 +184,18 @@ namespace MysqlDatabase
                 return true;
             return false;
         }
-        public string searchProduct(string word)
+        public List<string> searchProduct(string word)
         {
             string query = "SELECT * FROM bitirme.Products WHERE type LIKE '%"+word+"%'" ;
             OpenConnection();
             MySqlCommand cmd = new MySqlCommand(query, connection);
             MySqlDataReader dataReader = cmd.ExecuteReader();
-            string result = null;
+            List<string> result = new List<string>();
+            //string result;
+
             while (dataReader.Read())
             {
-                result = (string)dataReader["type"];
+                result.Add((string)dataReader["type"]);
             }
             dataReader.Close();
             this.CloseConnection();

@@ -38,9 +38,20 @@ namespace PassGetWebApp
         }
         protected void Searchbtn(object sender, EventArgs e)
         {
-            
-            if(db.searchProduct(txtArama.Text) != null)
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + db.searchProduct(txtArama.Text) + "');", true);
+            string result = null;
+            List < string > list= db.searchProduct(txtArama.Text);   
+            if(list != null)
+            {
+
+                foreach (string product in list)
+                    //result = product + Environment.NewLine + result;
+                    result = product + "\\n" + result;
+                
+
+                //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + product + "');", true);
+            }
+
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + result + "');", true);
         }
     }
 }
