@@ -83,6 +83,7 @@
     <Content Include="MainPage.aspx" />
     <Content Include="passget.png" />
     <Content Include="style.css" />
+    <Content Include="styleLogin.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

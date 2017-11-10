@@ -38,20 +38,26 @@ namespace PassGetWebApp
         }
         protected void Searchbtn(object sender, EventArgs e)
         {
-            string result = null;
+            string result = "No Product with that name =>"+ txtArama.Text;
             List < string > list= db.searchProduct(txtArama.Text);   
-            if(list != null)
+            if(list.Count == 0)
             {
-
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + result + "');", true);
+            }
+            else
+            {
+                result = null;
                 foreach (string product in list)
                     //result = product + Environment.NewLine + result;
                     result = product + "\\n" + result;
-                
 
-                //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + product + "');", true);
+
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + result + "');", true);
+
             }
 
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + result + "');", true);
+
+            //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + result + "');", true);
         }
     }
 }

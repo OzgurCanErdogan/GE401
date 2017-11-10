@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Login Screen</title>
+    <link href="styleLogin.css" rel="stylesheet"/>
 </head>
 <body>
     <div style="margin-left:auto; margin-right:auto; text-align:center;">
