@@ -6,6 +6,7 @@ using System.Web;
 
 namespace MysqlDatabase
 {
+    //DENEME 123
     class DBConnect
     {
         private MySqlConnection connection;
@@ -81,6 +82,7 @@ namespace MysqlDatabase
         //Insert statement
         public void Insert()
         {
+            //Benim adım Özgürsas
             string query = "INSERT INTO Customers (idCustomers, Name, Surname, age, gender, city) VALUES('21300', 'Ozgur', 'Erdogan', '22', 'erkek', 'ankara')";
 
             //open connection
@@ -151,6 +153,7 @@ namespace MysqlDatabase
         public bool checkAccount(int ID, string Password)
         {
             string query = "SELECT * FROM bitirme.Users WHERE userID = " + ID ;
+            string updateQuery = "UPDATE bitirme.Users SET status = 'online' WHERE userID ="+ID; 
             OpenConnection();
             MySqlCommand cmd = new MySqlCommand(query, connection);
             MySqlDataReader dataReader = cmd.ExecuteReader();
@@ -162,10 +165,19 @@ namespace MysqlDatabase
                 passwordCheck = dataReader["password"].ToString();
             }
             dataReader.Close();
-            this.CloseConnection();
+           
             if (ID == IDcheck && Password == passwordCheck)
-                return true;
+            {
+
+               cmd = new MySqlCommand(updateQuery, connection);
+               cmd.ExecuteNonQuery();
+               dataReader.Close();
+               this.CloseConnection();
+               return true;
+            }
+            this.CloseConnection();
             return false;
+            
         }
         public bool checkAdmin(int ID)
         {
