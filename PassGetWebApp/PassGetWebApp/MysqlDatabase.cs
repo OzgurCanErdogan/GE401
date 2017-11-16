@@ -86,7 +86,7 @@ namespace MysqlDatabase
             //open connection
             if (this.OpenConnection() == true)
             {
-                //ben yaptım oldu zaa
+                //ben yaptım oldu zaaşş
                 //create command and assign the query and connection from the constructor
                 MySqlCommand cmd = new MySqlCommand(query, connection);
 
