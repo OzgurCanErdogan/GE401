@@ -9,19 +9,27 @@ using MysqlDatabase;
 
 namespace PassGetWebApp
 {
+
+    
     public partial class adminPage : System.Web.UI.Page
     {
+        Class1 client;
         DBConnect db;
         protected void Page_Load(object sender, EventArgs e)
         {
             db = new DBConnect();
+            client = new Class1();
+            client.createClient();
         }
+
+
+     
 
         protected void btnKayit_Click(object sender, EventArgs e)
         {
 
-
-
+            //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + Class1.mycontent+"aşkımmm" + "');", true);
+            client.JSON();
 
         }
 
@@ -34,6 +42,9 @@ namespace PassGetWebApp
         {
 
             db.InsertObject(TextBox1.Text, int.Parse(TextBox2.Text), TextBox3.Text);
+
+          
+
             
         }
         protected void Searchbtn(object sender, EventArgs e)

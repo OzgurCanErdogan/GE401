@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using PassGetWebApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,9 @@ namespace MysqlDatabase
         private string database;
         private string uid;
         private string password;
+        static string ozgur;
+        
+
 
         //Constructor
         public DBConnect()

@@ -1,13 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adminPage.aspx.cs" Inherits="PassGetWebApp.adminPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adminPage.aspx.cs" Inherits="PassGetWebApp.adminPage"  Async ="true"%>
 
 <!DOCTYPE html>
-
+    
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>PassGet Web Console </title>
     <link href="style.css" rel="stylesheet"/>
 </head>
+      
 <body>
     <form id="form1" runat="server">
         <div id="wrapper">

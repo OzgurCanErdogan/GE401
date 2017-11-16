@@ -176,3 +176,7 @@ C:\Users\Arif\Documents\GitHub\GE401\PassGetWebApp\PassGetWebApp\obj\Debug\PassG
 C:\Users\Arif\Documents\GitHub\GE401\PassGetWebApp\PassGetWebApp\obj\Debug\PassGetWebApp.csproj.CoreCompileInputs.cache
 C:\Users\Arif\Documents\GitHub\GE401\PassGetWebApp\PassGetWebApp\obj\Debug\PassGetWebApp.dll
 C:\Users\Arif\Documents\GitHub\GE401\PassGetWebApp\PassGetWebApp\obj\Debug\PassGetWebApp.pdb
+C:\Users\Arif\Documents\GitHub\GE401\PassGetWebApp\PassGetWebApp\bin\Newtonsoft.Json.dll
+C:\Users\Arif\Documents\GitHub\GE401\PassGetWebApp\PassGetWebApp\bin\Newtonsoft.Json.xml
+C:\Users\Arif\Documents\GitHub\GE401\PassGetWebApp\PassGetWebApp\bin\System.Net.Http.Formatting.dll
+C:\Users\Arif\Documents\GitHub\GE401\PassGetWebApp\PassGetWebApp\bin\System.Net.Http.Formatting.xml
