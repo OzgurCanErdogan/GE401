@@ -81,6 +81,7 @@ namespace MysqlDatabase
         //Insert statement
         public void Insert()
         {
+            //Benim adım Özgürsas
             string query = "INSERT INTO Customers (idCustomers, Name, Surname, age, gender, city) VALUES('21300', 'Ozgur', 'Erdogan', '22', 'erkek', 'ankara')";
 
             //open connection
