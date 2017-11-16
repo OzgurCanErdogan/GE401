@@ -6,6 +6,7 @@ using System.Web;
 
 namespace MysqlDatabase
 {
+    //DENEME 123
     class DBConnect
     {
         private MySqlConnection connection;
