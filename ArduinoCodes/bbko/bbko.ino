@@ -22,14 +22,14 @@ void setup() {
   SPI.begin();
 
   // Initiate MFRC522 RFID reader
-  mfrc522.PCD_Init();
+  mfrc522.PCD_Init  ();
 
   // Initiate Wi-Fi Connection
   Serial.println("AT"); 
 
   // Pin 13 and 3 is the indicator for the RFID reads. 13 being READ, 3 being DELETED. 
   pinMode(13,OUTPUT);
-  pinmode(3,OUTPUT);
+  pinMode(3,OUTPUT);
 
   delay(3000);
 
@@ -44,8 +44,13 @@ void setup() {
   // Setting MUX mode and opening a server at PORT 80. Try not to change this port pls boiz.
   Serial.print("AT+CIPMUX=1\r\n");
   delay(2000);
-  Serial.print("AT+CIPSERVER=1,80\r\n");
+  Serial.print("AT+CIPSERVER=1,88\r\n");
   delay(1000);
+
+  // After getting server running wait for RFID, maybe one day it'll come
+  do {
+    successRead = getID();
+  } while (!successRead);
 
 }
 
@@ -81,11 +86,6 @@ void loop() {
       Serial.println("AT+CIPCLOSE=0");
     }
   }
-
-  // After getting server running wait for RFID, maybe one day it'll come
-  do {
-    successRead = getID();
-  } while (!successRead);
 }
 
 int getID() {
