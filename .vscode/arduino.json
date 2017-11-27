@@ -1,5 +1,5 @@
 {
     "board": "arduino:avr:uno",
-    "port": "COM4",
+    "port": "COM3",
     "sketch": "ArduinoCodes\\bbko\\bbko.ino"
 }
