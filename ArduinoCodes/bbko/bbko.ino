@@ -1,9 +1,12 @@
+#include <SoftwareSerial.h>
+SoftwareSerial wifiConnection(5,6);
 #include <SPI.h>
 #include <MFRC522.h>
 #include <EEPROM.h>
+#include <stdlib.h>
 
-#define wireless_name "mahmut123" // Please enter the local wireless SSID which the WebApp lies
-#define wireless_pwn "kerik123" // And the password for it of course
+const String wireless_name = "babako"; // Please enter the local wireless SSID which the WebApp lies
+const String wireless_pwn = "bun12345"; // And the password for it of course
 #define RST_PIN 9
 #define SS_PIN 10
 
@@ -11,70 +14,37 @@ byte readCard[4];
 int successRead;
 String tagID[32];
 int itemCount = 0;
-const String passgetID = "M-A-K-01"; // PassGet ID specific for the basket
+const String passgetID = "M-A-K-01"; // PassGet ID specific for the basket  
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);
 MFRC522::MIFARE_Key key;
 
 void setup() {
   // Open a serial connection to baud rate 115200 which is the standard for ESP8266
-  Serial.begin(115200);
+  Serial.begin(9600);
   SPI.begin();
+  wifiConnection.begin(9600);
+  delay(2000);
 
   // Initiate MFRC522 RFID reader
   mfrc522.PCD_Init();
 
-  // Initiate Wi-Fi Connection
-  Serial.println("AT");
-
-  // Pin 2 and 4 is the indicator for the RFID reads. 13 being READ, 3 being DELETED. 
+  // Pin 2 and 4 is the indicator for the RFID reads. 2 being READ, 4 being DELETED. 
   pinMode(2,OUTPUT);
   pinMode(4,OUTPUT);
-  pinMode(13,OUTPUT);  
-  
-  delay(2000);
 
-  if(Serial.find("OK")){ // If we established a connection between Wi-Fi and ESP8266
-    Serial.println("AT+CWMODE=1"); // Set the mode for the ESP8266
-    delay(2000);
-    String connectionString=String("AT+CWJAP=\"")+wireless_name+"\",\""+wireless_pwn+"\""; // Connection string. Proceed with caution.
-    Serial.println(connectionString);
-    delay(5000);
-  } else{
-    Serial.println("Error!");
-  }
-  
-  // Setting MUX mode and opening a server at PORT 80. Try not to change this port pls boiz.
-  Serial.print("AT+CIPMUX=1\r\n");
-  delay(2000);
-  Serial.print("AT+CIPSERVER=1,80\r\n");
+  delay(500);
   delay(1000);
+
+  if(!connectInternet()){
+    Serial.println("internet gg");
+  } else  {
+    Serial.println("Internet OK!");
+  }
 }
 
 void loop() {
-  // If communication is available
-  if(Serial.available()>0){
-    // If there is an incoming message
-    if(Serial.find("+IPD")){
-      String metin = String("<p>") + createJsonData() + String("</p>");  
-      String cipsend = "AT+CIPSEND=";
-      cipsend +="0";
-      cipsend +=",";
-      cipsend += metin.length();
-      cipsend += "\r\n";
-      Serial.print(cipsend);
-      delay(50);
-      Serial.println(metin);
-      delay(2000);
-      Serial.println("AT+CIPCLOSE=0");
-    }
-  }
-  else{
-    // After getting server running wait for RFID, maybe one day it'll come
-    //do {
-      successRead = getID();
-    //} while (!successRead);
-  }
+  successRead = getID();
 }
 
 int getID() {
@@ -170,4 +140,73 @@ void changeBasket(String tempID){
     itemCount--;
     Serial.println(createJsonData());    
   }
+  sendToServer(tempID);  
+}
+
+String sendATCommand(String ATcommand, int timeout, boolean debug){
+  wifiConnection.println(ATcommand);
+  long int myTime = millis();
+  String cevap = "";
+
+  while((myTime + timeout) > millis()){
+    while(wifiConnection.available()){
+      char k = wifiConnection.read();
+      cevap += k;
+    }
+    if(cevap.indexOf("OK") != -1)
+      break;
+  }
+  if(debug){
+    Serial.println("Cevap: " + cevap);
+  }
+  return cevap;
+}
+
+String sendSTARTCommand(String ATcommand, int timeout, boolean debug){
+  wifiConnection.println(ATcommand);
+  long int myTime = millis();
+  String cevap = "";
+
+  while((myTime + timeout) > millis()){
+    while(wifiConnection.available()){
+      char k = wifiConnection.read();
+      cevap += k;
+    }
+    if(cevap.indexOf("Link") != -1 || cevap.indexOf("ALREADY LINKED") != -1)
+      break;
+  }
+  if(debug){
+    Serial.println("Cevap: " + cevap);
+  }
+  return cevap;
+}
+
+void sendToServer(String rfid){
+  String header;
+  
+  Serial.print("HELLO");
+  sendSTARTCommand("AT+CIPSTART=\"TCP\",\"139.179.55.95\",80",2000,true);
+    
+  header = "GET /passget.php?";
+  String metin = createJsonData();  
+  
+  header += "passid="+ passgetID + "&passjson=" + metin;
+  int hlength = header.length()+4;
+  Serial.print(hlength);
+  sendATCommand("AT+CIPSEND=" + String(hlength),2000,true);
+  delay(1000);
+  sendATCommand(header+"\r\n",5000,true);
+  delay(200);
+  sendATCommand("AT+CIPCLOSE",2000,true);
+}
+
+boolean connectInternet(){
+  sendATCommand("AT+CWMODE=1", 1000, true);
+  sendATCommand("AT+CWJAP=\""+wireless_name+"\",\""+wireless_pwn+"\"",10000,true);
+  delay(2000);
+  String durum = "";
+  durum = sendATCommand("AT+CIFSR", 30000, true);
+  if(durum.indexOf("FAIL") != -1)
+    return false;
+  return true;
 }
