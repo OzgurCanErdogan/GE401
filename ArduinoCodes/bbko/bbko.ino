@@ -185,7 +185,7 @@ void sendToServer(String rfid){
   String header;
   
   Serial.print("HELLO");
-  sendSTARTCommand("AT+CIPSTART=\"TCP\",\"139.179.55.95\",80",2000,true);
+  sendSTARTCommand("AT+CIPSTART=\"TCP\",\"139.179.55.114\",80",5000,true);
     
   header = "GET /passget.php?";
   String metin = createJsonData();  
@@ -194,9 +194,9 @@ void sendToServer(String rfid){
   int hlength = header.length()+4;
   Serial.print(hlength);
   sendATCommand("AT+CIPSEND=" + String(hlength),2000,true);
-  delay(1000);
+  delay(2000);
   sendATCommand(header+"\r\n",5000,true);
-  delay(200);
+  delay(1000);
   sendATCommand("AT+CIPCLOSE",2000,true);
 }
 
