@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="tech.babako.passget.PaymentActivity">
+
+    <TextView
+        android:id="@+id/tv_payment_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Lütfen ödeme bilgilerinizi giriniz."
+        android:textAlignment="center"
+        android:textColor="#c62828"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_payment_card_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_payment_info"
+        android:layout_marginTop="25dp">
+
+        <!-- Card Information !-->
+        <EditText
+            android:id="@+id/et_payment_card_name"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Kart Üzerinde Yazan İsim"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <EditText
+            android:id="@+id/et_payment_card_no"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Kart Numarası"
+            android:inputType="number"
+            app:layout_constraintLeft_toLeftOf="@id/et_payment_card_name"
+            app:layout_constraintTop_toBottomOf="@id/et_payment_card_name" />
+
+        <EditText
+            android:id="@+id/et_payment_card_expiration"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:hint="Geçerlilik tarihi"
+            app:layout_constraintLeft_toLeftOf="@id/et_payment_card_name"
+            app:layout_constraintTop_toBottomOf="@id/et_payment_card_no" />
+
+        <EditText
+            android:id="@+id/et_payment_card_cvc"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:hint="CVC"
+            app:layout_constraintLeft_toRightOf="@id/et_payment_card_expiration"
+            app:layout_constraintTop_toTopOf="@id/et_payment_card_expiration" />
+
+        <!-- Payment info !-->
+        <TextView
+            android:id="@+id/tv_payment_total_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Toplam Tutar:"
+            android:textSize="18sp"
+            android:textColor="#263238"
+            app:layout_constraintLeft_toLeftOf="@id/et_payment_card_expiration"
+            app:layout_constraintTop_toBottomOf="@id/et_payment_card_expiration"/>
+        <TextView
+            android:id="@+id/tv_payment_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="119.97₺"
+            android:textColor="#c62828"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@id/tv_payment_total_label"
+            app:layout_constraintTop_toBottomOf="@id/et_payment_card_expiration"/>
+
+        <Button
+            android:id="@+id/button_payment_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ödemeyi Yap"
+            android:backgroundTint="#c62828"
+            android:textColor="#fff"
+            app:layout_constraintTop_toBottomOf="@id/tv_payment_total"
+            app:layout_constraintLeft_toLeftOf="@id/tv_payment_total_label"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>
