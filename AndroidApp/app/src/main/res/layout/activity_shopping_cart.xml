@@ -6,331 +6,372 @@
     android:layout_height="match_parent"
     tools:context="tech.babako.passget.ShoppingCartActivity">
 
-    <!-- Normally RecyclerView will be used, but for demo purposes Constraint Layout !-->
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/cl_basket_items"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_shopping_cart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Item 1 !-->
-        <android.support.v7.widget.CardView
-            android:id="@+id/cv_item_1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/cl_item_1"
+            <TextView
+                android:id="@+id/tv_shopping_cart_info"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Alışveriş Sepetiniz"
+                android:textColor="#c62828"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/img_item_1"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/tshirt"
+            <!-- Normally RecyclerView will be used, but for demo purposes Constraint Layout !-->
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cl_basket_items"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_shopping_cart_info">
+
+                <ProgressBar
+                    android:id="@+id/pb_shopping_cart"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/cl_left_item_1"
-                    android:layout_width="wrap_content"
+                <!-- Item 1 !-->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_item_1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@id/img_item_1"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:id="@+id/tv_name_item_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Mavi T-Shirt"
-                        android:textColor="#263238"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintLeft_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tv_property_item_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Beden: Medium"
-                        android:textColor="#616161"
-                        app:layout_constraintLeft_toLeftOf="@id/tv_name_item_1"
-                        app:layout_constraintTop_toBottomOf="@id/tv_name_item_1" />
-
-                    <TextView
-                        android:id="@+id/tv_stock_no_item_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Stok No: 045133"
-                        android:textColor="#616161"
-                        app:layout_constraintLeft_toLeftOf="@id/tv_property_item_1"
-                        app:layout_constraintTop_toBottomOf="@id/tv_property_item_1" />
-
-                    <TextView
-                        android:id="@+id/tv_price_item_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="39.99₺"
-                        android:textColor="#c62828"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintLeft_toLeftOf="@id/tv_stock_no_item_1"
-                        app:layout_constraintTop_toBottomOf="@id/tv_stock_no_item_1" />
-                </android.support.constraint.ConstraintLayout>
-            </android.support.constraint.ConstraintLayout>
-        </android.support.v7.widget.CardView>
-
-        <!-- Item 2 !-->
-        <android.support.v7.widget.CardView
-            android:id="@+id/cv_item_2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_item_1">
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/cl_item_2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/img_item_2"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/tshirt"
+                    android:layout_marginTop="16dp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/cl_left_item_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@id/img_item_2"
+                    app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/tv_name_item_2"
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/cl_item_1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Blue T-Shirt"
-                        android:textColor="#263238"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintLeft_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/tv_property_item_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Size: Medium"
-                        android:textColor="#616161"
-                        app:layout_constraintLeft_toLeftOf="@id/tv_name_item_2"
-                        app:layout_constraintTop_toBottomOf="@id/tv_name_item_2" />
+                        <ImageView
+                            android:id="@+id/img_item_1"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:src="@drawable/tshirt"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/tv_stock_no_item_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Stock Number: 045133"
-                        android:textColor="#616161"
-                        app:layout_constraintLeft_toLeftOf="@id/tv_property_item_2"
-                        app:layout_constraintTop_toBottomOf="@id/tv_property_item_2" />
+                        <android.support.constraint.ConstraintLayout
+                            android:id="@+id/cl_left_item_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginStart="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@id/img_item_1"
+                            app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/tv_price_item_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="39.99₺"
-                        android:textColor="#c62828"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintLeft_toLeftOf="@id/tv_stock_no_item_2"
-                        app:layout_constraintTop_toBottomOf="@id/tv_stock_no_item_2" />
-                </android.support.constraint.ConstraintLayout>
-            </android.support.constraint.ConstraintLayout>
-        </android.support.v7.widget.CardView>
+                            <TextView
+                                android:id="@+id/tv_name_item_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mavi T-Shirt"
+                                android:textColor="#263238"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintLeft_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Item 3 !-->
-        <android.support.v7.widget.CardView
-            android:id="@+id/cv_item_3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_item_2">
+                            <TextView
+                                android:id="@+id/tv_property_item_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Beden: Medium"
+                                android:textColor="#616161"
+                                app:layout_constraintLeft_toLeftOf="@id/tv_name_item_1"
+                                app:layout_constraintTop_toBottomOf="@id/tv_name_item_1" />
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/cl_item_3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                            <TextView
+                                android:id="@+id/tv_stock_no_item_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Stok No: 045133"
+                                android:textColor="#616161"
+                                app:layout_constraintLeft_toLeftOf="@id/tv_property_item_1"
+                                app:layout_constraintTop_toBottomOf="@id/tv_property_item_1" />
 
-                <ImageView
-                    android:id="@+id/img_item_3"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/tshirt"
+                            <TextView
+                                android:id="@+id/tv_price_item_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="39.99₺"
+                                android:textColor="#c62828"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintLeft_toLeftOf="@id/tv_stock_no_item_1"
+                                app:layout_constraintTop_toBottomOf="@id/tv_stock_no_item_1" />
+                        </android.support.constraint.ConstraintLayout>
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.v7.widget.CardView>
+
+                <!-- Item 2 !-->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_item_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cv_item_1">
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/cl_left_item_3"
-                    android:layout_width="wrap_content"
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/cl_item_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/img_item_2"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:src="@drawable/tshirt"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <android.support.constraint.ConstraintLayout
+                            android:id="@+id/cl_left_item_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginStart="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@id/img_item_2"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/tv_name_item_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Blue T-Shirt"
+                                android:textColor="#263238"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintLeft_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_property_item_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Size: Medium"
+                                android:textColor="#616161"
+                                app:layout_constraintLeft_toLeftOf="@id/tv_name_item_2"
+                                app:layout_constraintTop_toBottomOf="@id/tv_name_item_2" />
+
+                            <TextView
+                                android:id="@+id/tv_stock_no_item_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Stock Number: 045133"
+                                android:textColor="#616161"
+                                app:layout_constraintLeft_toLeftOf="@id/tv_property_item_2"
+                                app:layout_constraintTop_toBottomOf="@id/tv_property_item_2" />
+
+                            <TextView
+                                android:id="@+id/tv_price_item_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="39.99₺"
+                                android:textColor="#c62828"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintLeft_toLeftOf="@id/tv_stock_no_item_2"
+                                app:layout_constraintTop_toBottomOf="@id/tv_stock_no_item_2" />
+                        </android.support.constraint.ConstraintLayout>
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.v7.widget.CardView>
+
+                <!-- Item 3 !-->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_item_3"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@id/img_item_3"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cv_item_2">
 
-                    <TextView
-                        android:id="@+id/tv_name_item_3"
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/cl_item_3"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Blue T-Shirt"
-                        android:textColor="#263238"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintLeft_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/tv_property_item_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Size: Medium"
-                        android:textColor="#616161"
-                        app:layout_constraintLeft_toLeftOf="@id/tv_name_item_3"
-                        app:layout_constraintTop_toBottomOf="@id/tv_name_item_3" />
+                        <ImageView
+                            android:id="@+id/img_item_3"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:src="@drawable/tshirt"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/tv_stock_no_item_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Stock Number: 045133"
-                        android:textColor="#616161"
-                        app:layout_constraintLeft_toLeftOf="@id/tv_property_item_3"
-                        app:layout_constraintTop_toBottomOf="@id/tv_property_item_3" />
+                        <android.support.constraint.ConstraintLayout
+                            android:id="@+id/cl_left_item_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginStart="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@id/img_item_3"
+                            app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/tv_price_item_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="39.99₺"
-                        android:textColor="#c62828"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintLeft_toLeftOf="@id/tv_stock_no_item_3"
-                        app:layout_constraintTop_toBottomOf="@id/tv_stock_no_item_3" />
-                </android.support.constraint.ConstraintLayout>
+                            <TextView
+                                android:id="@+id/tv_name_item_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Blue T-Shirt"
+                                android:textColor="#263238"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintLeft_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_property_item_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Size: Medium"
+                                android:textColor="#616161"
+                                app:layout_constraintLeft_toLeftOf="@id/tv_name_item_3"
+                                app:layout_constraintTop_toBottomOf="@id/tv_name_item_3" />
+
+                            <TextView
+                                android:id="@+id/tv_stock_no_item_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Stock Number: 045133"
+                                android:textColor="#616161"
+                                app:layout_constraintLeft_toLeftOf="@id/tv_property_item_3"
+                                app:layout_constraintTop_toBottomOf="@id/tv_property_item_3" />
+
+                            <TextView
+                                android:id="@+id/tv_price_item_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="39.99₺"
+                                android:textColor="#c62828"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintLeft_toLeftOf="@id/tv_stock_no_item_3"
+                                app:layout_constraintTop_toBottomOf="@id/tv_stock_no_item_3" />
+                        </android.support.constraint.ConstraintLayout>
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.v7.widget.CardView>
+
+
             </android.support.constraint.ConstraintLayout>
-        </android.support.v7.widget.CardView>
 
+            <!-- Divider !-->
+            <View
+                android:id="@+id/basket_cost_divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="#bdbdbd"
+                app:layout_constraintLeft_toLeftOf="@id/cl_basket_items"
+                app:layout_constraintRight_toRightOf="@id/cl_basket_items"
+                app:layout_constraintTop_toBottomOf="@id/cl_basket_items" />
 
-    </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_total_cost_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:text="Ara Toplam:"
+                android:textColor="#263238"
+                app:layout_constraintBottom_toBottomOf="@id/tv_total_cost_value"
+                app:layout_constraintRight_toLeftOf="@id/tv_total_cost_value"
+                app:layout_constraintTop_toBottomOf="@id/basket_cost_divider" />
 
-    <!-- Divider !-->
-    <View
-        android:id="@+id/basket_cost_divider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="#757575"
-        app:layout_constraintLeft_toLeftOf="@id/cl_basket_items"
-        app:layout_constraintRight_toRightOf="@id/cl_basket_items"
-        app:layout_constraintTop_toBottomOf="@id/cl_basket_items"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
-    <TextView
-        android:id="@+id/tv_total_cost_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ara Toplam:"
-        app:layout_constraintTop_toBottomOf="@id/basket_cost_divider"
-        app:layout_constraintRight_toLeftOf="@id/tv_total_cost_value"
-        app:layout_constraintBottom_toBottomOf="@id/tv_total_cost_value"
-        android:layout_marginRight="4dp"
-        android:textColor="#263238"/>
-    <TextView
-        android:id="@+id/tv_total_cost_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="@id/basket_cost_divider"
-        app:layout_constraintTop_toBottomOf="@id/basket_cost_divider"
-        android:text="98.37₺"
-        android:textColor="#c62828"
-        android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/tv_total_cost_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="98.37₺"
+                android:textColor="#c62828"
+                android:textSize="14sp"
+                app:layout_constraintRight_toRightOf="@id/basket_cost_divider"
+                app:layout_constraintTop_toBottomOf="@id/basket_cost_divider" />
 
-    <TextView
-        android:id="@+id/tv_kdv_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="KDV:"
-        app:layout_constraintTop_toBottomOf="@id/tv_total_cost_label"
-        app:layout_constraintRight_toLeftOf="@id/tv_kdv_value"
-        app:layout_constraintBottom_toBottomOf="@id/tv_kdv_value"
-        android:layout_marginRight="4dp"
-        android:textColor="#263238"/>
-    <TextView
-        android:id="@+id/tv_kdv_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="21.59₺"
-        app:layout_constraintTop_toBottomOf="@id/tv_total_cost_label"
-        app:layout_constraintRight_toRightOf="@id/basket_cost_divider"
-        android:textColor="#c62828"
-        android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/tv_kdv_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:text="KDV:"
+                android:textColor="#263238"
+                app:layout_constraintBottom_toBottomOf="@id/tv_kdv_value"
+                app:layout_constraintRight_toLeftOf="@id/tv_kdv_value"
+                app:layout_constraintTop_toBottomOf="@id/tv_total_cost_label" />
 
-    <TextView
-        android:id="@+id/total_price_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Toplam:"
-        android:textColor="#263238"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/tv_kdv_label"
-        app:layout_constraintRight_toLeftOf="@id/tv_total_price_value"
-        app:layout_constraintBottom_toBottomOf="@id/tv_total_price_value"/>
-    <TextView
-        android:id="@+id/tv_total_price_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_kdv_label"
-        app:layout_constraintRight_toRightOf="@id/basket_cost_divider"
-        android:text="119.97₺"
-        android:textColor="#c62828"
-        android:textStyle="bold"
-        android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tv_kdv_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21.59₺"
+                android:textColor="#c62828"
+                android:textSize="14sp"
+                app:layout_constraintRight_toRightOf="@id/basket_cost_divider"
+                app:layout_constraintTop_toBottomOf="@id/tv_total_cost_label" />
 
-    <Button
-        android:id="@+id/button_submit_shopping_cart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ödemeye Git"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#c62828"
-        android:textColor="#fff"
-        app:layout_constraintTop_toBottomOf="@id/basket_cost_divider"
-        app:layout_constraintLeft_toLeftOf="@id/basket_cost_divider"/>
+            <TextView
+                android:id="@+id/total_price_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Toplam:"
+                android:textColor="#263238"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/tv_total_price_value"
+                app:layout_constraintRight_toLeftOf="@id/tv_total_price_value"
+                app:layout_constraintTop_toBottomOf="@id/tv_kdv_label" />
+
+            <TextView
+                android:id="@+id/tv_total_price_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="119.97₺"
+                android:textColor="#c62828"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintRight_toRightOf="@id/basket_cost_divider"
+                app:layout_constraintTop_toBottomOf="@id/tv_kdv_label" />
+
+            <Button
+                android:id="@+id/button_submit_shopping_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#c62828"
+                android:text="Ödemeye Git"
+                android:textColor="#fff"
+                app:layout_constraintLeft_toLeftOf="@id/basket_cost_divider"
+                app:layout_constraintTop_toBottomOf="@id/basket_cost_divider" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </android.support.constraint.ConstraintLayout>
