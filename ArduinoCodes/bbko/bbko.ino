@@ -32,6 +32,7 @@ void setup() {
   // Pin 2 and 4 is the indicator for the RFID reads. 2 being READ, 4 being DELETED. 
   pinMode(2,OUTPUT);
   pinMode(4,OUTPUT);
+  pinMode(3,OUTPUT);
 
   delay(500);
   delay(1000);
@@ -39,6 +40,7 @@ void setup() {
   if(!connectInternet()){
     Serial.println("internet gg");
   } else  {
+    digitalWrite(3,HIGH);
     Serial.println("Internet OK!");
   }
 }
@@ -185,7 +187,7 @@ void sendToServer(String rfid){
   String header;
   
   Serial.print("HELLO");
-  sendSTARTCommand("AT+CIPSTART=\"TCP\",\"139.179.55.114\",80",5000,true);
+  sendSTARTCommand("AT+CIPSTART=\"TCP\",\"139.179.55.92\",80",5000,true);
     
   header = "GET /passget.php?";
   String metin = createJsonData();  
