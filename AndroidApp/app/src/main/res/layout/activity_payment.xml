@@ -19,6 +19,17 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ProgressBar
+        android:id="@+id/pb_payment"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/cl_payment_card_info"
         android:layout_width="0dp"
@@ -34,6 +45,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Kart Üzerinde Yazan İsim"
+            android:text="Arif Can Terzioğlu"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
@@ -43,6 +55,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Kart Numarası"
+            android:text="4332 **** **** 1327"
             android:inputType="number"
             app:layout_constraintLeft_toLeftOf="@id/et_payment_card_name"
             app:layout_constraintTop_toBottomOf="@id/et_payment_card_name" />
@@ -52,6 +65,7 @@
             android:layout_width="120dp"
             android:layout_height="70dp"
             android:hint="Geçerlilik tarihi"
+            android:text="12/17"
             app:layout_constraintLeft_toLeftOf="@id/et_payment_card_name"
             app:layout_constraintTop_toBottomOf="@id/et_payment_card_no" />
 
@@ -62,6 +76,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:hint="CVC"
+            android:text="522"
             app:layout_constraintLeft_toRightOf="@id/et_payment_card_expiration"
             app:layout_constraintTop_toTopOf="@id/et_payment_card_expiration" />
 
@@ -96,6 +111,37 @@
             app:layout_constraintTop_toBottomOf="@id/tv_payment_total"
             app:layout_constraintLeft_toLeftOf="@id/tv_payment_total_label"/>
 
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_payment_success"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+        <ImageView
+            android:id="@+id/img_payment_success"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/tick"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="32dp"/>
+        <TextView
+            android:id="@+id/tv_payment_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ödeme Başarılı"
+            android:textSize="24sp"
+            android:textColor="#c62828"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/img_payment_success"
+            app:layout_constraintTop_toBottomOf="@id/img_payment_success"
+            app:layout_constraintRight_toRightOf="@id/img_payment_success"/>
     </android.support.constraint.ConstraintLayout>
 
 

@@ -187,9 +187,9 @@ void sendToServer(String rfid){
   String header;
   
   Serial.print("HELLO");
-  sendSTARTCommand("AT+CIPSTART=\"TCP\",\"139.179.55.92\",80",5000,true);
+  sendSTARTCommand("AT+CIPSTART=\"TCP\",\"dijkstra.ug.bcc.bilkent.edu.tr\",80",5000,true);
     
-  header = "GET /passget.php?";
+  header = "GET /~arif.terzioglu/GE401/passget.php?";
   String metin = createJsonData();  
   
   header += "passid="+ passgetID + "&passjson=" + metin;
