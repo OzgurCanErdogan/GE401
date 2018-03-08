@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#c62828</color>
-    <color name="colorPrimaryDark">#8e0f0f</color>
+    <color name="primaryColor">#c62828</color>
+    <color name="primaryLightColor">#ff5f52</color>
+    <color name="primaryDarkColor">#8e0000</color>
     <color name="colorAccent">#c0c0c0</color>
+    <color name="secondaryColor">#2c5a8c</color>
+    <color name="secondaryLightColor">#5f87bc</color>
+    <color name="secondaryDarkColor">#00315e</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#ffffff</color>
+    <color name="darkTextColor">#000</color>
+    <color name="darkLightTextColor">#c8000000</color>
+
+    <array name="rect_color">
+        <item>@color/color_blue</item>
+        <item>@color/color_brown</item>
+        <item>@color/color_green</item>
+        <item>@color/divider_grey</item>
+        <item>@color/color_orange</item>
+    </array>
 </resources>

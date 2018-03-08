@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_feed"
+        android:title="Anasayfa"
+        android:icon="@drawable/ic_home_white_24dp" />
+    <item
+        android:id="@+id/nav_offers"
+        android:title="Kampanyalar"
+        android:icon="@drawable/ic_local_offer_white_24dp" />
+    <item
+        android:id="@+id/nav_history"
+        android:title="Geçmişim"
+        android:icon="@drawable/ic_history_white_24dp" />
+</menu>

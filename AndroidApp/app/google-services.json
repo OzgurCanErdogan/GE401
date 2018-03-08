@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "154721125874",
+    "firebase_url": "https://passget-f5252.firebaseio.com",
+    "project_id": "passget-f5252",
+    "storage_bucket": "passget-f5252.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:154721125874:android:29665433a5703c4f",
+        "android_client_info": {
+          "package_name": "tech.babako.passget"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "154721125874-evkaib57cegtjn2qd82naf5ip2bf5580.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tech.babako.passget",
+            "certificate_hash": "ebbeef9a23d0434107b89bf27efc555d76cc50a5"
+          }
+        },
+        {
+          "client_id": "154721125874-uls6e1s9ha5qd5j62div1vvbr02ctj7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE3-_Nr-IpMUVxpFq6qJW0E0KSKlVq7bo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "154721125874-uls6e1s9ha5qd5j62div1vvbr02ctj7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

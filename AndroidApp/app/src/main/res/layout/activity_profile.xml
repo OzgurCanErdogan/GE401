@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="tech.babako.passget.ProfileActivity"
+    android:padding="16dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/cimg_profile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/default_profile_img"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="32dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/secondaryColor"/>
+
+    <!-- Name !-->
+    <TextView
+        android:id="@+id/tv_profile_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ad Soyad"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cimg_profile"
+        android:textColor="@color/darkLightTextColor"/>
+    <TextView
+        android:id="@+id/tv_profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/tv_profile_name_label"
+        app:layout_constraintTop_toBottomOf="@id/tv_profile_name_label"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="16dp"
+        tools:text="Bünyamin Çolak"
+        android:textColor="@color/darkTextColor" />
+
+    <!-- Email !-->
+    <TextView
+        android:id="@+id/tv_profile_email_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/tv_profile_name_label"
+        app:layout_constraintTop_toBottomOf="@id/tv_profile_name"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
+        android:text="Email"
+        android:textStyle="bold"
+        android:textColor="@color/darkLightTextColor"/>
+    <TextView
+        android:id="@+id/tv_profile_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/tv_profile_name_label"
+        app:layout_constraintTop_toBottomOf="@id/tv_profile_email_label"
+        android:layout_marginTop="4dp"
+        tools:text="bunyamincolak@gmail.com"
+        android:textColor="@color/darkTextColor"/>
+</android.support.constraint.ConstraintLayout>
