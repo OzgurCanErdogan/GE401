@@ -6,37 +6,46 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp">
 
         <TextView
             android:id="@+id/tv_favorite_shops"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
             android:text="Favori Dükkanlarım"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:textColor="@color/darkTextColor"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <HorizontalScrollView
             android:id="@+id/sv_favorite_shops"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
+            android:background="@color/primaryLightColor"
+            android:paddingStart="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_favorite_shops">
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp">
 
                 <android.support.v7.widget.CardView
                     android:id="@+id/cv_feed_1"
                     android:layout_width="100dp"
-                    android:layout_height="120dp"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp">
 
@@ -50,7 +59,7 @@
                             android:layout_width="0dp"
                             android:layout_height="70dp"
                             android:padding="5dp"
-                            android:src="@drawable/mavi_logo"
+                            android:src="@drawable/mor_logo"
                             app:layout_constraintDimensionRatio="1"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
@@ -61,7 +70,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="MAVİ"
+                            android:text="MOR"
                             android:textColor="@color/darkTextColor"
                             android:textStyle="bold"
                             app:layout_constraintLeft_toLeftOf="parent"
@@ -73,7 +82,7 @@
                 <android.support.v7.widget.CardView
                     android:id="@+id/cv_feed_2"
                     android:layout_width="100dp"
-                    android:layout_height="120dp"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp">
 
@@ -87,7 +96,7 @@
                             android:layout_width="0dp"
                             android:layout_height="70dp"
                             android:padding="5dp"
-                            android:src="@drawable/mavi_logo"
+                            android:src="@drawable/kara_logo"
                             app:layout_constraintDimensionRatio="1"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
@@ -98,7 +107,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="MAVİ"
+                            android:text="KARA"
                             android:textColor="@color/darkTextColor"
                             android:textStyle="bold"
                             app:layout_constraintLeft_toLeftOf="parent"
@@ -108,9 +117,9 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/cv_feed_1"
+                    android:id="@+id/cv_feed_3"
                     android:layout_width="100dp"
-                    android:layout_height="120dp"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp">
 
@@ -135,7 +144,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="MAVİ"
+                            android:text="U.S. Solo"
                             android:textColor="@color/darkTextColor"
                             android:textStyle="bold"
                             app:layout_constraintLeft_toLeftOf="parent"
@@ -145,9 +154,9 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/cv_feed_1"
+                    android:id="@+id/cv_feed_4"
                     android:layout_width="100dp"
-                    android:layout_height="120dp"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp">
 
@@ -172,7 +181,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="MAVİ"
+                            android:text="Ralph Marker"
                             android:textColor="@color/darkTextColor"
                             android:textStyle="bold"
                             app:layout_constraintLeft_toLeftOf="parent"
@@ -182,9 +191,9 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/cv_feed_1"
+                    android:id="@+id/cv_feed_5"
                     android:layout_width="100dp"
-                    android:layout_height="120dp"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp">
 
@@ -209,7 +218,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="MAVİ"
+                            android:text="Coconut"
                             android:textColor="@color/darkTextColor"
                             android:textStyle="bold"
                             app:layout_constraintLeft_toLeftOf="parent"
@@ -219,9 +228,9 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/cv_feed_1"
+                    android:id="@+id/cv_feed_6"
                     android:layout_width="100dp"
-                    android:layout_height="120dp"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp">
 
@@ -246,7 +255,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="MAVİ"
+                            android:text="HN"
                             android:textColor="@color/darkTextColor"
                             android:textStyle="bold"
                             app:layout_constraintLeft_toLeftOf="parent"
@@ -254,6 +263,113 @@
                             app:layout_constraintTop_toBottomOf="@id/img_feed_fav_6" />
                     </android.support.constraint.ConstraintLayout>
                 </android.support.v7.widget.CardView>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/tv_store_history_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Son Alışveriş Yaptığınız Yerler"
+            android:textColor="@color/darkTextColor"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sv_favorite_shops" />
+
+        <HorizontalScrollView
+            android:id="@+id/sv_store_history"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/secondaryColor"
+            android:paddingStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_store_history_label">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_history_1"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical">
+
+                        <ImageView
+                            android:id="@+id/img_feed_history_1"
+                            android:layout_width="0dp"
+                            android:layout_height="70dp"
+                            android:padding="5dp"
+                            android:src="@drawable/mor_logo"
+                            app:layout_constraintDimensionRatio="1"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_feed_history_label_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="MOR"
+                            android:textColor="@color/darkTextColor"
+                            android:textStyle="bold"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/img_feed_history_1" />
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_history_2"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical">
+
+                        <ImageView
+                            android:id="@+id/img_feed_history_2"
+                            android:layout_width="0dp"
+                            android:layout_height="70dp"
+                            android:padding="5dp"
+                            android:src="@drawable/avakado_logo"
+                            app:layout_constraintDimensionRatio="1"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_feed_history_label_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="AVAKADO"
+                            android:textColor="@color/darkTextColor"
+                            android:textStyle="bold"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/img_feed_history_2" />
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.v7.widget.CardView>
+
             </LinearLayout>
         </HorizontalScrollView>
     </android.support.constraint.ConstraintLayout>

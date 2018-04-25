@@ -18,9 +18,8 @@ import java.net.URLEncoder;
 
 public class NetworkUtils {
 
-    public static String postToDatabase(String passgetID, String sync_url){
-        try
-        {
+    public static String postToDatabase(String passgetID, String sync_url) {
+        try {
             String basketID = passgetID;
             URL url = new URL(sync_url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -28,27 +27,24 @@ public class NetworkUtils {
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
             OutputStream outputStream = httpURLConnection.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
-            String post_data = URLEncoder.encode("basketID","UTF-8")+"="+URLEncoder.encode(basketID,"UTF-8");
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+            String post_data = URLEncoder.encode("basketID", "UTF-8") + "=" + URLEncoder.encode(basketID, "UTF-8");
             bufferedWriter.write(post_data);
             bufferedWriter.flush();
             bufferedWriter.close();
             outputStream.close();
             InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
-            String result="";
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+            String result = "";
             String line;
-            while((line = bufferedReader.readLine()) !=null)
-            {
-                result +=line+"\n";
+            while ((line = bufferedReader.readLine()) != null) {
+                result += line + "\n";
             }
             bufferedReader.close();
             outputStream.close();
             httpURLConnection.disconnect();
             return result;
-        }
-        catch (MalformedURLException e)
-        {
+        } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
@@ -56,9 +52,8 @@ public class NetworkUtils {
         return null;
     }
 
-    public static String syncWithBasket (String basket_id, String user_id) {
-        try
-        {
+    public static String syncWithBasket(String basket_id, String user_id) {
+        try {
             String basketID = basket_id;
             URL url = new URL("http://dijkstra.ug.bcc.bilkent.edu.tr/~arif.terzioglu/GE401/basket.php");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -66,28 +61,25 @@ public class NetworkUtils {
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
             OutputStream outputStream = httpURLConnection.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"iso-8859-1"));
-            String post_data = URLEncoder.encode("basket-id","iso-8859-1")+"="+URLEncoder.encode(basketID,"iso-8859-1")
-                    +"&"+URLEncoder.encode("user-id","iso-8859-1") + "=" + URLEncoder.encode(user_id,"iso-8859-1");
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "iso-8859-1"));
+            String post_data = URLEncoder.encode("basket-id", "iso-8859-1") + "=" + URLEncoder.encode(basketID, "iso-8859-1")
+                    + "&" + URLEncoder.encode("user-id", "iso-8859-1") + "=" + URLEncoder.encode(user_id, "iso-8859-1");
             bufferedWriter.write(post_data);
             bufferedWriter.flush();
             bufferedWriter.close();
             outputStream.close();
             InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
-            String result="";
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+            String result = "";
             String line;
-            while((line = bufferedReader.readLine()) !=null)
-            {
-                result +=line+"\n";
+            while ((line = bufferedReader.readLine()) != null) {
+                result += line + "\n";
             }
             bufferedReader.close();
             outputStream.close();
             httpURLConnection.disconnect();
             return result;
-        }
-        catch (MalformedURLException e)
-        {
+        } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
@@ -96,39 +88,35 @@ public class NetworkUtils {
     }
 
     public static String postUserToDatabase(String uid, String name, String surname, String gender, String bday, String sync_url) {
-        try
-        {
+        try {
             URL url = new URL(sync_url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
             OutputStream outputStream = httpURLConnection.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"iso-8859-9"));
-            String post_data = URLEncoder.encode("user-id","UTF-8")+"="+URLEncoder.encode(uid,"iso-8859-9") +
-                    "&"+URLEncoder.encode("user-name","UTF-8")+"="+URLEncoder.encode(name,"iso-8859-9") +
-                    "&"+URLEncoder.encode("user-sname","UTF-8")+"="+URLEncoder.encode(surname,"iso-8859-9") +
-                    "&"+URLEncoder.encode("user-gender","UTF-8")+"="+URLEncoder.encode(gender,"iso-8859-9") +
-                    "&"+URLEncoder.encode("user-bday","UTF-8")+"="+URLEncoder.encode(bday,"iso-8859-9");
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "iso-8859-9"));
+            String post_data = URLEncoder.encode("user-id", "UTF-8") + "=" + URLEncoder.encode(uid, "iso-8859-9") +
+                    "&" + URLEncoder.encode("user-name", "UTF-8") + "=" + URLEncoder.encode(name, "iso-8859-9") +
+                    "&" + URLEncoder.encode("user-sname", "UTF-8") + "=" + URLEncoder.encode(surname, "iso-8859-9") +
+                    "&" + URLEncoder.encode("user-gender", "UTF-8") + "=" + URLEncoder.encode(gender, "iso-8859-9") +
+                    "&" + URLEncoder.encode("user-bday", "UTF-8") + "=" + URLEncoder.encode(bday, "iso-8859-9");
             bufferedWriter.write(post_data);
             bufferedWriter.flush();
             bufferedWriter.close();
             outputStream.close();
             InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
-            String result="";
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+            String result = "";
             String line;
-            while((line = bufferedReader.readLine()) !=null)
-            {
-                result +=line+"\n";
+            while ((line = bufferedReader.readLine()) != null) {
+                result += line + "\n";
             }
             bufferedReader.close();
             outputStream.close();
             httpURLConnection.disconnect();
             return result;
-        }
-        catch (MalformedURLException e)
-        {
+        } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
@@ -136,9 +124,8 @@ public class NetworkUtils {
         return null;
     }
 
-    public static String endShopping (String basket_id, String shopping_id) {
-        try
-        {
+    public static String endShopping(String basket_id, String shopping_id) {
+        try {
             String basketID = basket_id;
             URL url = new URL("http://dijkstra.ug.bcc.bilkent.edu.tr/~arif.terzioglu/GE401/endShopping.php");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -146,28 +133,59 @@ public class NetworkUtils {
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
             OutputStream outputStream = httpURLConnection.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"iso-8859-1"));
-            String post_data = URLEncoder.encode("basket-id","iso-8859-1")+"="+URLEncoder.encode(basket_id,"iso-8859-1")
-                    +"&"+URLEncoder.encode("sold-id","iso-8859-1") + "=" + URLEncoder.encode(shopping_id,"iso-8859-1");
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "iso-8859-1"));
+            String post_data = URLEncoder.encode("basket-id", "iso-8859-1") + "=" + URLEncoder.encode(basket_id, "iso-8859-1")
+                    + "&" + URLEncoder.encode("sold-id", "iso-8859-1") + "=" + URLEncoder.encode(shopping_id, "iso-8859-1");
             bufferedWriter.write(post_data);
             bufferedWriter.flush();
             bufferedWriter.close();
             outputStream.close();
             InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
-            String result="";
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+            String result = "";
             String line;
-            while((line = bufferedReader.readLine()) !=null)
-            {
-                result +=line+"\n";
+            while ((line = bufferedReader.readLine()) != null) {
+                result += line + "\n";
             }
             bufferedReader.close();
             outputStream.close();
             httpURLConnection.disconnect();
             return result;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        catch (MalformedURLException e)
-        {
+        return null;
+    }
+
+    public static String getUserHistory(String user_id) {
+        try {
+            String userID = user_id;
+            URL url = new URL("http://dijkstra.ug.bcc.bilkent.edu.tr/~arif.terzioglu/GE401/history.php");
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.setRequestMethod("POST");
+            httpURLConnection.setDoOutput(true);
+            httpURLConnection.setDoInput(true);
+            OutputStream outputStream = httpURLConnection.getOutputStream();
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "iso-8859-1"));
+            String post_data = URLEncoder.encode("userID", "iso-8859-1") + "=" + URLEncoder.encode(userID, "iso-8859-1");
+            bufferedWriter.write(post_data);
+            bufferedWriter.flush();
+            bufferedWriter.close();
+            outputStream.close();
+            InputStream inputStream = httpURLConnection.getInputStream();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+            String result = "";
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                result += line + "\n";
+            }
+            bufferedReader.close();
+            outputStream.close();
+            httpURLConnection.disconnect();
+            return result;
+        } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();

@@ -11,6 +11,7 @@
     <color name="secondaryTextColor">#ffffff</color>
     <color name="darkTextColor">#000</color>
     <color name="darkLightTextColor">#c8000000</color>
+    <color name="transparent">#00000000</color>
 
     <array name="rect_color">
         <item>@color/color_blue</item>

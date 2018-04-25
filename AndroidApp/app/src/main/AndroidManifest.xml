@@ -32,6 +32,10 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".OfferDetail"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".HistoryDetail"></activity>
     </application>
 
 </manifest>

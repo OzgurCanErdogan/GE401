@@ -14,7 +14,7 @@ byte readCard[4];
 int successRead;
 String tagID[32];
 int itemCount = 0;
-const String passgetID = "M-A-K-01"; // PassGet ID specific for the basket  
+const String passgetID = "M-A-K-01"; // PassGet ID specific for the basket 
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);
 MFRC522::MIFARE_Key key;
@@ -76,20 +76,6 @@ int getID() {
   return 1;
 }
 
-// Creates the JSON data to be sent to the server
-String createJsonData(){
-  // Create the JSON data
-  String jsonData = "{\"passgetID\":\"" + passgetID + "\",\"items\":[";
-
-  for(int i = 0; i<itemCount-1; i++){
-    jsonData += "\""+tagID[i]+"\",";
-  }
-  jsonData += "\""+tagID[itemCount-1]+"\"]}";
-  // We split the strings by commas, which we had to first convert our string to char first
-  // Then simply concatination no black magic here
-  return jsonData;
-}
-
 // Traverses the whole basket to find the desired item. If it is in the basket returns true
 boolean is_inBasket(String rfid){
   for(int i = 0; i<itemCount+1; i++){
@@ -108,10 +94,10 @@ int get_tagIndex(String rfid){
 }
 
 // Adds or deletes the desired item from the basket.
-void changeBasket(String tempID){
+void changeBasket(String rfid){
    // Check whether the RFID UID is in the basket. If not add it, if it is delete it 
-   if(!is_inBasket(tempID)){
-    tagID[itemCount] = tempID;     
+   if(!is_inBasket(rfid)){
+    tagID[itemCount] = rfid;     
     itemCount++;
   
     // Set the read as 1
@@ -119,9 +105,8 @@ void changeBasket(String tempID){
     delay(1000);
     digitalWrite(2,LOW);
     Serial.println("");
-    Serial.println(createJsonData());
   } else{
-    int index = get_tagIndex(tempID);
+    int index = get_tagIndex(rfid);
 
     // Traverse the following indexes and shift them by one, deal with first and the last terms.
     if(index == itemCount-1){
@@ -140,9 +125,8 @@ void changeBasket(String tempID){
     digitalWrite(4,LOW);
     // Don't forget to decrease the item count.
     itemCount--;
-    Serial.println(createJsonData());    
   }
-  sendToServer(tempID);  
+  sendToServer(rfid);  
 }
 
 String sendATCommand(String ATcommand, int timeout, boolean debug){
@@ -189,16 +173,15 @@ void sendToServer(String rfid){
   Serial.print("HELLO");
   sendSTARTCommand("AT+CIPSTART=\"TCP\",\"dijkstra.ug.bcc.bilkent.edu.tr\",80",5000,true);
     
-  header = "GET /~arif.terzioglu/GE401/passget.php?";
-  String metin = createJsonData();  
+  header = "GET /~arif.terzioglu/GE401/updateBasket.php?";
+  String data = rfid;  
   
-  header += "passid="+ passgetID + "&passjson=" + metin;
+  header += "basketID="+ passgetID + "&RFID=" + data;
   int hlength = header.length()+4;
   Serial.print(hlength);
   sendATCommand("AT+CIPSEND=" + String(hlength),2000,true);
-  delay(2000);
+  delay(500);
   sendATCommand(header+"\r\n",5000,true);
-  delay(1000);
   sendATCommand("AT+CIPCLOSE",2000,true);
 }
 

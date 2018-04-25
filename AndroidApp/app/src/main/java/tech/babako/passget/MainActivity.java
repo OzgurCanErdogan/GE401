@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import tech.babako.passget.Fragments.FeedFragment;
+import tech.babako.passget.Fragments.HistoryFragment;
 import tech.babako.passget.Fragments.OffersFragment;
 
 
@@ -93,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_offers:
                     my_toolbar.setTitle("PassGet | Kampanyalar");
                     fragment = new OffersFragment();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.nav_history:
+                    my_toolbar.setTitle("PassGet | Geçmişim");
+                    fragment = new HistoryFragment();
                     loadFragment(fragment);
                     return true;
                 default:

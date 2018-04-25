@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:layout_marginBottom="8dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_history_item"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/mor_logo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cv_history_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/img_history_item"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_history_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MOR"
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/darkTextColor"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_history_date_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alışveriş tarihi: "
+                android:textColor="@color/darkTextColor"
+                app:layout_constraintLeft_toLeftOf="@id/tv_history_store"
+                app:layout_constraintTop_toBottomOf="@id/tv_history_store"/>
+
+            <TextView
+                android:id="@+id/tv_history_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13.04.2018"
+                android:textColor="@color/darkTextColor"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@id/tv_history_date_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_history_store"/>
+
+
+            <TextView
+                android:id="@+id/tv_history_cost_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Toplam ödenen: "
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/darkTextColor"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_history_date_label"/>
+
+            <TextView
+                android:id="@+id/tv_history_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="139.99₺"
+                app:layout_constraintLeft_toRightOf="@id/tv_history_cost_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_history_date" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>
